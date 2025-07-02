@@ -9,9 +9,23 @@ const myLibrary = [];
 
 */
 
+
 function Book (title,author,pageNum,read) {
-    //constructor
-};
+    //object safeguard 
+        if(!new.target) {
+            throw Error("you must use the 'new' operator to call the constructor")
+        }
+    
+    //object constructor
+    this.title = title;
+    this.author = author;
+    this.pageNum = pageNum;
+    this.read = read;
+
+    //console test
+    this.annouce = function(){
+    console.log(`${this.title} by ${this.author} is ${this.pageNum} long, and I have ${this.read} it.`)};
+}
 
 /* Step 3) Write a function to take the parameters, create a book with a unique ID using & then create a unique ID using crypto.randomUUID() and add the new book to the myLibrary array 
 */ 
