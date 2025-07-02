@@ -22,16 +22,28 @@ function Book (title,author,pageNum,read) {
     this.pageNum = pageNum;
     this.read = read;
 
-    //console test
+   
+
+    this.bookID =crypto.randomUUID();
+    
+
+
+     //console test
     this.annouce = function(){
-    console.log(`${this.title} by ${this.author} is ${this.pageNum} long, and I have ${this.read} it.`)};
+    console.log(`${this.title} by ${this.author} is ${this.pageNum} long, and I have ${this.read} it. The ID is ${this.bookID}`)};
 }
+
+//test
+const Book1 = new Book("Fourth Wing","Rebecca Yarros",400,"Read");
+const Book2 = new Book("The Lord of the Rings","J.R.R Tolkien",500,"Not Read");
 
 /* Step 3) Write a function to take the parameters, create a book with a unique ID using & then create a unique ID using crypto.randomUUID() and add the new book to the myLibrary array 
 */ 
 
 function addBookToLibrary(){
 
+    //push new object to myLibrary Array
+    //myLibrary.push()
 }
 
 /* Step 4) Write a function that loops through the myLibrary array and will display each book on the webpage */
