@@ -22,8 +22,8 @@ function Book (title,author,pageNum,read) {
     this.bookID = crypto.randomUUID();
 
      //console test
-    this.annouce = function(){
-    console.log(`${this.title} by ${this.author} is ${this.pageNum} long, and I have ${this.read} it. The ID is ${this.bookID}`)};
+    // this.annouce = function(){
+    // console.log(`${this.title} by ${this.author} is ${this.pageNum} long, and I have ${this.read} it. The ID is ${this.bookID}`)};
 }
 
 
@@ -37,16 +37,52 @@ function addBookToLibrary(title,author,pageNum,read){
     //push the new bookto myLibrary array
     
     //test
-    newBook.annouce();
+    //newBook.annouce();
 
     return myLibrary.push(newBook);
 
 };
 
-/* Step 4) Write a function that loops through the myLibrary array and will display each book on the webpage */
+/* Step 4) Write a function that loops through the myLibrary array and will display each book on the webpage inside its own indivdual card 
+
+- look up for loop vs for each method vs nesting */
+
+        
+        const container = document.getElementById('container');
+       
+
+function displayBook(){
+
+    //for each item in myLibrary array
+    myLibrary.forEach((book) =>{ 
+        //console.table(book)
+       // extract the title, author, pageNum, and read status
+        const bookTitle = book.title;
+        const bookAuthor = book.author;
+        const bookPage = book.pageNum;
+        const bookStatus = book.read;
+       //create div and paragraph
+        const divItem = document.createElement('div');
+        const para = document.createElement('p');
+       
+       //put that text content into a div
+        para.textContent = `${bookTitle} ${bookAuthor} ${bookPage}  - ${bookStatus}`;
+       
+        //append that div into the main container
+        container.appendChild(divItem);
+        divItem.appendChild(para);
+
+    });
 
 
+ 
+};
 
+addBookToLibrary('Fourth Wing','Rebecca Yarros',512,'read');
+addBookToLibrary('A Court of Thorns and Roses','Sarah J. Maas',432,'read');
+addBookToLibrary('Dune','Frank Herbert',412,'not read');
+
+displayBook();
 
 /* Step 5) Create a button that will open a form allowing users to add a new book and add it to the library. */
 /* Step 6) Create a button that will be on each display card to remove the book from the library */ 
