@@ -1,0 +1,57 @@
+
+body,
+html {
+    box-sizing: border-box;
+    
+    margin: 0;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 16px;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: inherit;
+}
+
+
+/* 12 col grid */
+#container {
+    display:grid;
+    grid-template-columns: repeat(12,1fr);
+    gap:20px;
+}
+
+/*header styles */
+header {
+    background-color: cadetblue; /*for debugging purposes*/
+
+    grid-column: 1 /13;
+    grid-row:1;
+}
+
+/*user-form styles */
+.user-form {
+    background-color:darkseagreen; /*for debugging purposes*/
+
+    grid-column: 1 / 5;
+    grid-row: 2;
+}
+
+/*Library container */
+.library-container {
+    background-color:lightseagreen; /*for debugging purposes*/
+
+    grid-column: 5 / 13;
+    grid-row: 2;
+}
+
+/*footer styles */
+footer {
+    background-color: cadetblue; /*for debugging purposes*/
+
+    grid-column: 1 / 13;
+    grid-row: 3
+}
+
+
