@@ -8,11 +8,6 @@ const myLibrary = [];
    Read
 */
 function Book (title,author,pageNum,read) {
-    //object safeguard 
-        // if(!new.target) {
-        //      throw Error("you must use the 'new' operator to call the constructor")
-        //  }
-    
     //object constructor
     this.title = title;
     this.author = author;
@@ -47,10 +42,8 @@ function addBookToLibrary(title,author,pageNum,read){
 
 - look up for loop vs for each method vs nesting */
 
-        
-        const container = document.getElementById('container');
+const container = document.querySelector('.library-container');
        
-
 function displayBook(){
 
     //for each item in myLibrary array
@@ -61,6 +54,7 @@ function displayBook(){
         const bookAuthor = book.author;
         const bookPage = book.pageNum;
         const bookStatus = book.read;
+
        //create div and paragraph
         const divItem = document.createElement('div');
         const para = document.createElement('p');
@@ -78,6 +72,7 @@ function displayBook(){
  
 };
 
+//TEST BOOKS
 addBookToLibrary('Fourth Wing','Rebecca Yarros',512,'read');
 addBookToLibrary('A Court of Thorns and Roses','Sarah J. Maas',432,'read');
 addBookToLibrary('Dune','Frank Herbert',412,'not read');
