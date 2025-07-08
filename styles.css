@@ -1,10 +1,13 @@
+/* FONTS */ 
+@import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100..900;1,100..900&display=swap');
+
 
 body,
 html {
     box-sizing: border-box;
     
     margin: 0;
-    font-family: Arial, Helvetica, sans-serif;
+    font-family: "Roboto", Arial, sans-serif;
     font-size: 16px;
 }
 
@@ -13,6 +16,19 @@ html {
 *::after {
   box-sizing: inherit;
 }
+
+/*HEADING TAGS */
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    text-align: center;
+    margin:10px 0px;
+    font-weight:500
+}
+
 
 
 /* 12 col grid */
@@ -38,6 +54,7 @@ header {
     grid-row: 2;
 }
 
+
 /*Library container */
 .library-container {
     background-color:lightseagreen; /*for debugging purposes*/
@@ -54,11 +71,6 @@ header {
 .library-container h3 {
     grid-row:1;
     grid-column: 1 /span 3;
-    
-    margin:10px 0px;
-
-    text-align: center;
-    
 }
 
 .library-container div {
