@@ -15,6 +15,36 @@
         <div class ="user-form">
             <h3>Add A Book:</h3>
             <button id="create" type="button">Create Book</button>
+            <form id="bookForm">
+                <fieldset>
+                    <legend>Book Information</legend>
+                <div>
+                <label for="book-title">Book Title:
+                    <input type="text" id="book_title" name="book_title" placeholder="Title of Book">
+                </label>
+                </div>
+                <div>
+                <label for="book-author">Book Author:
+                    <input type="text" id="book_author" name="book_author" placeholder="Author of Book">
+                </label>
+                </div>
+                <div>
+                <label for="page-number">Book Length
+                    <input type="number" id="page_number" name="page_number">
+                </label>
+                </div>
+                </fieldset>
+                <div>
+                    <fieldset>
+                        <legend>Read Status</legend>
+                    <input type="checkbox" id="book_read" name="read-status" value="read">
+                    <label for="book-read">Read</label>
+
+                    <input type="checkbox" id="book_unread" name="read-status" value="not read">
+                    <label for="book-unread">Not Read</label>
+                    </fieldset>
+                </div>
+            </form>
         </div>
         <div class="library-container">
             <h3>Your Collection:</h3>
