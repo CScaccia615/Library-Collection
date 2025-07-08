@@ -51,9 +51,21 @@ header {
     grid-template-columns: repeat(auto-fill, minmax(300px, .25fr));
 }
 
+.library-container h3 {
+    grid-row:1;
+    grid-column: 1 /span 3;
+    
+    margin:10px 0px;
+
+    text-align: center;
+    
+}
+
 .library-container div {
     background-color: aliceblue; /*for debugging purposes */ 
     padding:10px;
+
+    grid-row:2
 
 
 }
