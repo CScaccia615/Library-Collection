@@ -52,8 +52,33 @@ header {
 
     grid-column: 1 / 5;
     grid-row: 2;
+
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-template-rows: .5fr .5fr 2fr;
+    grid-template-areas: 
+    "title"
+    "create"
+    "user-input-form";
 }
 
+.user-form h3 {
+    grid-area: title;
+}
+
+#create {
+    grid-area:create;
+
+    width:100px;
+    height:30px;
+
+    place-self: center;
+}
+
+.user-form form {
+    grid-area: user-input-form;
+
+}
 
 /*Library container */
 .library-container {
