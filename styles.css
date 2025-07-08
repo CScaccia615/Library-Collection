@@ -41,9 +41,21 @@ header {
 /*Library container */
 .library-container {
     background-color:lightseagreen; /*for debugging purposes*/
+    padding:5px;
 
     grid-column: 5 / 13;
     grid-row: 2;
+
+    display: grid;
+    gap:20px;
+    grid-template-columns: repeat(auto-fill, minmax(300px, .25fr));
+}
+
+.library-container div {
+    background-color: aliceblue; /*for debugging purposes */ 
+    padding:10px;
+
+
 }
 
 /*footer styles */
