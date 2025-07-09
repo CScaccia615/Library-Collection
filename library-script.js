@@ -43,6 +43,7 @@ function addBookToLibrary(title,author,pageNum,read){
 - look up for loop vs for each method vs nesting */
 
 const container = document.querySelector('.library-container');
+
        
 function displayBook(){
 
@@ -81,10 +82,16 @@ function displayBook(){
         divItem.appendChild(bookReadStatus);
 
     });
-
-
- 
 };
+
+/* Step 5) Create a button that will open a form allowing users to add a new book and add it to the library. */
+const createNewBook = document.querySelector('#create')
+
+createNewBook.addEventListener("click",() =>{
+    //for testing purposes
+    alert("works")
+
+} )
 
 //TEST BOOKS
 addBookToLibrary('Fourth Wing','Rebecca Yarros',512,'read');
@@ -93,6 +100,6 @@ addBookToLibrary('Dune','Frank Herbert',412,'not read');
 
 displayBook();
 
-/* Step 5) Create a button that will open a form allowing users to add a new book and add it to the library. */
+
 /* Step 6) Create a button that will be on each display card to remove the book from the library */ 
 /* Step 7) Add a button that will be on each display card to change the read status */
