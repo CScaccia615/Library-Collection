@@ -85,11 +85,15 @@ function displayBook(){
 };
 
 /* Step 5) Create a button that will open a form allowing users to add a new book and add it to the library. */
-const createNewBook = document.querySelector('#create')
+const createNewBook = document.querySelector('#create');
+const bookForm = document.querySelector('form')
+
+//set visibility of form to none
+bookForm.style.display ='none';
 
 createNewBook.addEventListener("click",() =>{
-    //for testing purposes
-    alert("works")
+    //make form show up
+    bookForm.style.display ='contents';
 
 } )
 
