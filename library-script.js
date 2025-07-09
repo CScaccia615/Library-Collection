@@ -57,14 +57,20 @@ function displayBook(){
 
        //create div and paragraph
         const divItem = document.createElement('div');
+        divItem.setAttribute('class', 'book');
         const para = document.createElement('p');
-       
+        const bookTitleDisplay = document.createElement('h4');
+
        //put that text content into a div
-        para.textContent = `${bookTitle} ${bookAuthor} ${bookPage}  - ${bookStatus}`;
+        bookTitleDisplay.textContent = `${bookTitle}`
+       // make title of book a h4 tag
+        para.textContent = `${bookAuthor} ${bookPage}  - ${bookStatus}`;
        
         //append that div into the main container
         container.appendChild(divItem);
+        
         divItem.appendChild(para);
+        divItem.insertBefore(bookTitleDisplay,para);
 
     });
 
