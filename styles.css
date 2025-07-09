@@ -75,9 +75,23 @@ header {
     place-self: center;
 }
 
-.user-form form {
+#bookForm form {
     grid-area: user-input-form;
+}
 
+fieldset {
+    border: none;
+}
+
+legend {
+    margin: 10px 0px;
+    font-weight: 500;
+    font-size: 17px;
+}
+
+label,
+input {
+    margin: 5px 0px;
 }
 
 /*Library container */
@@ -103,8 +117,6 @@ header {
     padding:10px;
 
     grid-row:2
-
-
 }
 
 /*footer styles */
