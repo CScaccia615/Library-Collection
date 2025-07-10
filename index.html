@@ -29,20 +29,21 @@
                 </label>
                 </div>
                 <div>
-                <label for="page-number">Book Length
+                <label for="page-number">Book Length:
                     <input type="number" id="page_number" name="page_number">
                 </label>
                 </div>
                 </fieldset>
                 <div>
                     <fieldset>
-                        <legend>Read Status</legend>
-                    <input type="checkbox" id="book_read" name="read-status" value="read">
+                    <legend>Read Status</legend>
+                    <input type="radio" id="book_read" name="read-status" value="read">
                     <label for="book-read">Read</label>
 
-                    <input type="checkbox" id="book_unread" name="read-status" value="not read">
+                    <input type="radio" id="book_unread" name="read-status" value="not read">
                     <label for="book-unread">Not Read</label>
                     </fieldset>
+                    <button id="addBook" type="submit" value="Add New Book">Add New Book</button>
                 </div>
             </form>
         </div>
