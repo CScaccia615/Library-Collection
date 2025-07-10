@@ -84,18 +84,42 @@ function displayBook(){
     });
 };
 
-/* Step 5) Create a button that will open a form allowing users to add a new book and add it to the library. */
-const createNewBook = document.querySelector('#create');
+/* Step 5) Create a button that will open a form allowing users to add a new book */
+const showForm = document.querySelector('#create');
 const bookForm = document.querySelector('form')
 
 //set visibility of form to none
 bookForm.style.display ='none';
 
-createNewBook.addEventListener("click",() =>{
+showForm.addEventListener("click",() =>{
     //make form show up
     bookForm.style.display ='contents';
 
 } )
+
+/* Step 6) Create a button that will submit new book from form and add it to the library */
+const addNewBook = document.querySelector('#addBook');
+
+function stopSubmit(event) {
+    event.preventDefault()
+}
+
+function submitBook(event) {
+    if(event.target === addNewBook){
+        alert("yes button works")
+            
+            /* a - check the form is completely filled out */
+
+            /* b - if it is - retreive form input values */
+            var formData = new FormData(bookForm)
+            /* c - run addBookToLibrary() with those values*/
+            //addBookToLibrary()
+    }
+
+}
+
+addNewBook.addEventListener("click", stopSubmit )
+document.addEventListener("click", submitBook);
 
 //TEST BOOKS
 addBookToLibrary('Fourth Wing','Rebecca Yarros',512,'read');
@@ -105,5 +129,6 @@ addBookToLibrary('Dune','Frank Herbert',412,'not read');
 displayBook();
 
 
-/* Step 6) Create a button that will be on each display card to remove the book from the library */ 
-/* Step 7) Add a button that will be on each display card to change the read status */
+
+/* Step 7) Create a button that will be on each display card to remove the book from the library */ 
+/* Step 8) Add a button that will be on each display card to change the read status */
