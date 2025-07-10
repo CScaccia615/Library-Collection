@@ -46,9 +46,10 @@ const container = document.querySelector('.library-container');
 
        
 function displayBook(){
-
+ //if else statement to check if book does not exist then run loop, if it does already exist do not run 
     //for each item in myLibrary array
     myLibrary.forEach((book) =>{ 
+       
         //console.table(book)
        // extract the title, author, pageNum, and read status
         const bookTitle = book.title;
@@ -125,7 +126,9 @@ function submitBook(event) {
                 let pageNum = Number(pageNumName)
                 let read = formData.get("read-status")
             /* c - run addBookToLibrary() with those values*/
-            addBookToLibrary(title,author,pageNum,read);
+            displayBook(addBookToLibrary(title,author,pageNum,read));
+
+            //d reset form
     }
 
 }
@@ -134,11 +137,11 @@ addNewBook.addEventListener("click", stopSubmit )
 document.addEventListener("click", submitBook);
 
 //TEST BOOKS
-addBookToLibrary('Fourth Wing','Rebecca Yarros',512,'read');
-addBookToLibrary('A Court of Thorns and Roses','Sarah J. Maas',432,'read');
-addBookToLibrary('Dune','Frank Herbert',412,'not read');
+// addBookToLibrary('Fourth Wing','Rebecca Yarros',512,'read');
+// addBookToLibrary('A Court of Thorns and Roses','Sarah J. Maas',432,'read');
+// addBookToLibrary('Dune','Frank Herbert',412,'not read');
 
-displayBook();
+//displayBook();
 
 
 
