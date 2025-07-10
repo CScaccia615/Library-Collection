@@ -33,8 +33,8 @@ function addBookToLibrary(title,author,pageNum,read){
     
     //test
     //newBook.annouce();
-
-    return myLibrary.push(newBook);
+    
+    myLibrary.push(newBook);
 
 };
 
@@ -80,7 +80,7 @@ function displayBook(){
         
         divItem.appendChild(bookPageDisplay);
         divItem.appendChild(bookReadStatus);
-
+        
     });
 };
 
@@ -112,8 +112,20 @@ function submitBook(event) {
 
             /* b - if it is - retreive form input values */
             var formData = new FormData(bookForm)
+            
+            //let data = formData
+                // for(const value of data.values()){
+                //     console.log(value)
+                // }
+
+                let title = formData.get("book_title");
+                let author = formData.get("book_author");
+                let pageNumName = formData.get("page_number");
+                
+                let pageNum = Number(pageNumName)
+                let read = formData.get("read-status")
             /* c - run addBookToLibrary() with those values*/
-            //addBookToLibrary()
+            addBookToLibrary(title,author,pageNum,read);
     }
 
 }
