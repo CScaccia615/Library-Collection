@@ -55,7 +55,7 @@ header {
 
     display: grid;
     grid-template-columns: 1fr;
-    grid-template-rows: .5fr .5fr 2fr;
+    grid-auto-rows: min-content;
     grid-template-areas: 
     "title"
     "create"
@@ -94,7 +94,7 @@ input {
     margin: 5px 0px;
 }
 
-/*Library container */
+/* Library container */
 .library-container {
     background-color:lightseagreen; /*for debugging purposes*/
     padding:5px;
@@ -103,20 +103,21 @@ input {
     grid-row: 2;
 
     display: grid;
-    gap:20px;
-    grid-template-columns: repeat(auto-fill, minmax(300px, .25fr));
+    gap: 20px;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+   
 }
 
 .library-container h3 {
-    grid-row:1;
-    grid-column: 1 /span 3;
+    grid-column:1 / -1;
 }
 
-.library-container .book {
+ .book {
     background-color: aliceblue; /*for debugging purposes */ 
     padding:10px;
-
-    grid-row:2
+    width: 200px;
+    display: flex;
+    flex-direction: column;
 }
 
 .book h4 {
