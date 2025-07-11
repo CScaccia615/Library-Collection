@@ -44,12 +44,13 @@ function addBookToLibrary(title,author,pageNum,read){
 
 const container = document.querySelector('.library-container');
 
-       
+
 function displayBook(){
- //if else statement to check if book does not exist then run loop, if it does already exist do not run 
+ 
     //for each item in myLibrary array
-    myLibrary.forEach((book) =>{ 
-       
+  for(const book of myLibrary){
+        if(book === myLibrary.at(-1)) {
+       //if else statement to check if book does not exist then run loop, if it does already exist than break
         //console.table(book)
        // extract the title, author, pageNum, and read status
         const bookTitle = book.title;
@@ -81,9 +82,12 @@ function displayBook(){
         
         divItem.appendChild(bookPageDisplay);
         divItem.appendChild(bookReadStatus);
-        
-    });
-};
+    }
+    else
+        continue;
+}
+
+  }
 
 /* Step 5) Create a button that will open a form allowing users to add a new book */
 const showForm = document.querySelector('#create');
@@ -106,9 +110,7 @@ function stopSubmit(event) {
 }
 
 function submitBook(event) {
-    if(event.target === addNewBook){
-        alert("yes button works")
-            
+    if(event.target === addNewBook){            
             /* a - check the form is completely filled out */
 
             /* b - if it is - retreive form input values */
@@ -129,6 +131,7 @@ function submitBook(event) {
             displayBook(addBookToLibrary(title,author,pageNum,read));
 
             //d reset form
+            bookForm.reset()
     }
 
 }
@@ -141,7 +144,7 @@ document.addEventListener("click", submitBook);
 // addBookToLibrary('A Court of Thorns and Roses','Sarah J. Maas',432,'read');
 // addBookToLibrary('Dune','Frank Herbert',412,'not read');
 
-//displayBook();
+// displayBook();
 
 
 
