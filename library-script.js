@@ -16,6 +16,7 @@ function Book (title,author,pageNum,read) {
 
     this.bookID = crypto.randomUUID();
 
+
      //console test
     // this.annouce = function(){
     // console.log(`${this.title} by ${this.author} is ${this.pageNum} long, and I have ${this.read} it. The ID is ${this.bookID}`)};
@@ -31,9 +32,6 @@ function addBookToLibrary(title,author,pageNum,read){
     
     //push the new bookto myLibrary array
     
-    //test
-    //newBook.annouce();
-    
     myLibrary.push(newBook);
 
 };
@@ -43,15 +41,14 @@ function addBookToLibrary(title,author,pageNum,read){
 - look up for loop vs for each method vs nesting */
 
 const container = document.querySelector('.library-container');
-
+        
 
 function displayBook(){
- 
     //for each item in myLibrary array
   for(const book of myLibrary){
-        if(book === myLibrary.at(-1)) {
+    if(book === myLibrary.at(-1)) {
        //if else statement to check if book does not exist then run loop, if it does already exist than break
-        //console.table(book)
+
        // extract the title, author, pageNum, and read status
         const bookTitle = book.title;
         const bookAuthor = book.author;
@@ -66,6 +63,7 @@ function displayBook(){
         const bookAuthorDisplay = document.createElement('p');
         const bookPageDisplay = document.createElement('p');
 
+
        // make title of book a h4 tag
         bookTitleDisplay.textContent = `${bookTitle}`;
 
@@ -74,6 +72,8 @@ function displayBook(){
         bookPageDisplay.textContent =`Page Length: ${bookPage}`
         bookReadStatus.textContent = `${bookStatus}`;
        
+        //create button to toggle read status
+  
         //append that div into the main container
         container.appendChild(divItem);
         
@@ -82,8 +82,10 @@ function displayBook(){
         
         divItem.appendChild(bookPageDisplay);
         divItem.appendChild(bookReadStatus);
+       
     }
-    else
+
+    else 
         continue;
 }
 
@@ -139,14 +141,48 @@ function submitBook(event) {
 addNewBook.addEventListener("click", stopSubmit )
 document.addEventListener("click", submitBook);
 
+
+
+/* Step 7) Create a button that will be on each display card to remove the book from the library 
+    Ideas: 
+        - button will need to be created INSIDE each of the new books
+        This leads me to have 2 options
+            1) entire DOM creation of each item will need to be moved into the obejct
+                Positive of Opt 1: One Object constructor so protoypial inheritance might be easier -- think this option is not as benefical as option 2
+            2) Create an options Object prototype and from there when a new book is created have it pull from both the Book Object constructor AND the 
+            Options Constructor (test this later on with duplicate code ?) 
+                Positive of Option 2: Can store the event of remove AND edit (see step 8)
+
+                Plan: 
+                newBook would inherit the following from Book Object: 
+                    -title
+                    -author
+                    -page count
+                    -read status
+                    -bookID
+                newBook would inherit the following from Options Object
+                    -delete button
+                    -edit button
+
+                    The two above actions would happen in the addBookToLibrary function
+
+                delete button: 
+                    - delete button would somehow attach itself to the generate bookID
+                        -so that when it is clicked, a *query* would run a search through the myLibrary Array
+                        - once the match is found, that book is deleted
+                        - items will shift on the page to refelect the chamge (this should be automatic)
+
+*/
+
+
+/* Step 8) Add a button that will be on each display card to change the read status 
+    - btn will be created in displayBook() 
+    - event will be here
+*/
+
 //TEST BOOKS
-// addBookToLibrary('Fourth Wing','Rebecca Yarros',512,'read');
+addBookToLibrary('Fourth Wing','Rebecca Yarros',512,'read');
 // addBookToLibrary('A Court of Thorns and Roses','Sarah J. Maas',432,'read');
 // addBookToLibrary('Dune','Frank Herbert',412,'not read');
 
-// displayBook();
-
-
-
-/* Step 7) Create a button that will be on each display card to remove the book from the library */ 
-/* Step 8) Add a button that will be on each display card to change the read status */
+displayBook();
