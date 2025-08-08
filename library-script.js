@@ -1,5 +1,6 @@
 // Step 1) create array to store library books
 const myLibrary = [];
+const container = document.querySelector('.library-container');
 
 /* Step 2) Create a function that will take the following parameters:
    Title
@@ -22,6 +23,17 @@ function Book (title,author,pageNum,read) {
     // console.log(`${this.title} by ${this.author} is ${this.pageNum} long, and I have ${this.read} it. The ID is ${this.bookID}`)};
 }
 
+//stuck here
+function Options() {
+    /* delete button */
+    const deleteBtn = document.createElement('button')
+    deleteBtn.setAttribute('id','deleteBtn');
+
+    /* edit button */
+    const editBtn = document.createElement('button');
+    editBtn.setAttribute('id','editBtn')
+    
+}
 
 /* Step 3) Write a function to take the parameters, create a NEW book with those parameters, assign it a unique ID using crypto.randomUUID() and add the new book to the myLibrary array 
 */ 
@@ -40,7 +52,7 @@ function addBookToLibrary(title,author,pageNum,read){
 
 - look up for loop vs for each method vs nesting */
 
-const container = document.querySelector('.library-container');
+
         
 
 function displayBook(){
@@ -160,15 +172,15 @@ document.addEventListener("click", submitBook);
                     -page count
                     -read status
                     -bookID
-                newBook would inherit the following from Options Object
+                newBook would inherit the following from options Object
                     -delete button
                     -edit button
 
                     The two above actions would happen in the addBookToLibrary function
 
                 delete button: 
-                    - delete button would somehow attach itself to the generate bookID
-                        -so that when it is clicked, a *query* would run a search through the myLibrary Array
+                    - delete button would somehow attach itself to the generated bookID
+                        -so that when it is clicked, a filter would run a search through the myLibrary Array
                         - once the match is found, that book is deleted
                         - items will shift on the page to refelect the chamge (this should be automatic)
 
