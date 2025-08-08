@@ -18,9 +18,9 @@ function Book (title,author,pageNum,read) {
     this.bookID = crypto.randomUUID();
 
 
-     //console test
-    // this.annouce = function(){
-    // console.log(`${this.title} by ${this.author} is ${this.pageNum} long, and I have ${this.read} it. The ID is ${this.bookID}`)};
+    /*testing section
+    this.annouce = function(){
+    console.log(`${this.title} by ${this.author} is ${this.pageNum} long, and I have ${this.read} it. The ID is ${this.bookID}`)};*/
 }
 
 //stuck here
@@ -194,7 +194,7 @@ document.addEventListener("click", submitBook);
 
 //TEST BOOKS
 addBookToLibrary('Fourth Wing','Rebecca Yarros',512,'read');
-// addBookToLibrary('A Court of Thorns and Roses','Sarah J. Maas',432,'read');
-// addBookToLibrary('Dune','Frank Herbert',412,'not read');
+addBookToLibrary('A Court of Thorns and Roses','Sarah J. Maas',432,'read');
+addBookToLibrary('Dune','Frank Herbert',412,'not read');
 
 displayBook();
