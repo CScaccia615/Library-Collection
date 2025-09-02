@@ -33,6 +33,7 @@ function addBookToLibrary(title,author,pageNumber,readStatus){
 addBookToLibrary("foo","bar",5,"read")
 
 const table = document.getElementById("table")
+
 //step 3 create table - https://stackoverflow.com/questions/72527457/how-to-create-an-html-table-from-an-array-of-objects
 function displayBooks(){
     for(Book of myLibrary){
@@ -56,3 +57,12 @@ function displayBooks(){
     }
 }
 
+/* 
+step 4a) create a "add book" button that brings up a form that will allow users to input the details for a new book
+
+step 4b) take the data from the form and use it to add the book to the library via the addBookToLibrary function
+*/
+
+//4a 
+const showForm = document.querySelector('#create');
+const bookForm = document.querySelector('form');
