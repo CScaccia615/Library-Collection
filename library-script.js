@@ -62,8 +62,10 @@ step 4a) create a "add book" button that brings up a form that will allow users 
 
 step 4b) using event.preventDefault() prevent the submit button from sending it to a server and instead store it locally 
     - documentation: https://developer.mozilla.org/en-US/docs/Web/API/Event/preventDefault
+                     https://www.w3schools.com/jsref/event_preventdefault.asp
 
 step 4c) take the data from the form and use it to add the book to the library via the addBookToLibrary function
+    documentation: https://developer.mozilla.org/en-US/docs/Web/API/FormData/FormData
 */
 
 //4a 
@@ -79,3 +81,31 @@ showForm.addEventListener("click",() =>{
     bookForm.style.display ='contents';
 
 } )
+
+//4b
+//stop default action for submit button
+const addNewBook = document.querySelector('#addBook');
+
+//test
+const output = document.getElementById("output");
+
+function stopSubmit(event) {
+    event.preventDefault()
+}
+//4c 
+function submitBook(event){
+    if(event.target === addNewBook){
+        // create new form data object
+        const bookFormData = new FormData(bookForm,addNewBook);
+        for ([key, value] of bookFormData) {
+            output.textContent += `${key}: ${value} \n`;
+        }
+    }
+}
+
+
+
+
+
+addNewBook.addEventListener("click", stopSubmit )
+document.addEventListener("click", submitBook);
