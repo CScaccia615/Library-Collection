@@ -60,9 +60,22 @@ function displayBooks(){
 /* 
 step 4a) create a "add book" button that brings up a form that will allow users to input the details for a new book
 
-step 4b) take the data from the form and use it to add the book to the library via the addBookToLibrary function
+step 4b) using event.preventDefault() prevent the submit button from sending it to a server and instead store it locally 
+    - documentation: https://developer.mozilla.org/en-US/docs/Web/API/Event/preventDefault
+
+step 4c) take the data from the form and use it to add the book to the library via the addBookToLibrary function
 */
 
 //4a 
 const showForm = document.querySelector('#create');
 const bookForm = document.querySelector('form');
+
+//set CSS style to none to hide form 
+bookForm.style.display ='none';
+
+//change form visibility when showForm button is clicked
+showForm.addEventListener("click",() =>{
+    //make form show up
+    bookForm.style.display ='contents';
+
+} )
