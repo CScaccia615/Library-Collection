@@ -17,25 +17,31 @@ function Book(title,author,pageNumber,readStatus) {
     this.title = title,
     this.author = author,
     this.pageNumber = pageNumber,
-    this.readStatus = readStatus
+    this.readStatus = readStatus,
+    this.bookID = crypto.randomUUID();
 }
+
+// Book.prototype.updateBook = displayBooks();
 
 /*Step 2) Create a function that will take parameters and create a new book from the Book Object, and store it in the myLibraryArray
 */
 
 function addBookToLibrary(title,author,pageNumber,readStatus){
-    const book = new Book(title,author,pageNumber,readStatus);
+
+   const book = new Book(title,author,pageNumber,readStatus);
 
     myLibrary.push(book)
-    
+
+    return book
+    //displayBooks()
 }
 
-addBookToLibrary("foo","bar",5,"read")
+
 
 const table = document.getElementById("table")
 
 //step 3 create table - https://stackoverflow.com/questions/72527457/how-to-create-an-html-table-from-an-array-of-objects
-function displayBooks(){
+function displayBooks(Book){
     for(Book of myLibrary){
         const newRow = document.createElement("tr");
         const tdBook = document.createElement("td");
@@ -54,7 +60,8 @@ function displayBooks(){
         newRow.appendChild(tdReadStatus);
         table.appendChild(newRow);
         
-    }
+   }
+
 }
 
 /* 
@@ -64,18 +71,21 @@ step 4b) using event.preventDefault() prevent the submit button from sending it 
     - documentation: https://developer.mozilla.org/en-US/docs/Web/API/Event/preventDefault
                      https://www.w3schools.com/jsref/event_preventdefault.asp
 
-step 4c) take the data from the form and use it to add the book to the library via the addBookToLibrary function
+
+step 4c pt 1) when submit button is pressed - reset the table to be blank
+
+step 4c pt 2) take the data from the form and use it to add the book to the library via the addBookToLibrary function
     documentation: https://developer.mozilla.org/en-US/docs/Web/API/FormData/FormData
+
 */
 
-//4a 
+//4a
 const showForm = document.querySelector('#create');
-const bookForm = document.querySelector('form');
+const bookForm = document.querySelector('form')
 
-//set CSS style to none to hide form 
+//set visibility of form to none
 bookForm.style.display ='none';
 
-//change form visibility when showForm button is clicked
 showForm.addEventListener("click",() =>{
     //make form show up
     bookForm.style.display ='contents';
@@ -83,29 +93,32 @@ showForm.addEventListener("click",() =>{
 } )
 
 //4b
-//stop default action for submit button
 const addNewBook = document.querySelector('#addBook');
-
-//test
-const output = document.getElementById("output");
 
 function stopSubmit(event) {
     event.preventDefault()
 }
-//4c 
-function submitBook(event){
-    if(event.target === addNewBook){
-        // create new form data object
-        const bookFormData = new FormData(bookForm,addNewBook);
-        for ([key, value] of bookFormData) {
-            output.textContent += `${key}: ${value} \n`;
-        }
+
+//4c pt 1 & 2 --breaking when displayBooks() is activated -- why?
+
+function submitBook(event) {
+    
+
+            let title = document.getElementById("book_title").value;
+            let author = document.getElementById("book_author").value;
+            let pageNum = document.getElementById("page_number").value;
+            let readStatus = document.getElementById("book_read").value;
+           
+          
+            
+            addBookToLibrary(title,author,pageNum,readStatus);
+            
+            //d reset form
+           document.getElementById("bookForm").reset();
+           displayBooks(myLibrary)
     }
-}
 
 
 
-
-
-addNewBook.addEventListener("click", stopSubmit )
-document.addEventListener("click", submitBook);
+addNewBook.addEventListener("click", stopSubmit);
+addNewBook.addEventListener("click", submitBook);
