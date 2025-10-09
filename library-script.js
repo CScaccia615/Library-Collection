@@ -1,3 +1,16 @@
+/* Step 1) Make a Book object constructor that has the following key/value pairs:
+    1)book title
+    2)book author
+    3)page count
+    4)read status
+    5)a unique ID using crypto.randomUUID() <-- how do we do this tbd
+
+    Step 2) Create a function that will take parameters and create a new book from the Book Object, and store it in the myLibraryArray
+
+    Step 3 create table - https://stackoverflow.com/questions/72527457/how-to-create-an-html-table-from-an-array-of-objects
+
+*/
+
 const myLibrary = [
     //array to store book objects
     {
@@ -18,13 +31,7 @@ const myLibrary = [
 
 ]
 
-/* Step 1) Make a Book object constructor that has the following key/value pairs:
-    1)book title
-    2)book author
-    3)page count
-    4)read status
-    5)a unique ID using crypto.randomUUID() <-- how do we do this tbd
-*/
+
 
 //this is the prototype
 
@@ -39,8 +46,7 @@ function Book(title,author,pageNumber,readStatus) {
 
 // Book.prototype.updateBook = displayBooks();
 
-/*Step 2) Create a function that will take parameters and create a new book from the Book Object, and store it in the myLibraryArray
-*/
+
 
 function addBookToLibrary(title,author,pageNumber,readStatus){
 
@@ -52,11 +58,9 @@ function addBookToLibrary(title,author,pageNumber,readStatus){
     //displayBooks()
 }
 
-
-
 const table = document.getElementById("table")
 
-//step 3 create table - https://stackoverflow.com/questions/72527457/how-to-create-an-html-table-from-an-array-of-objects
+
 function displayBooks(Book){
     for(Book of myLibrary){
         const newRow = document.createElement("tr");
@@ -115,8 +119,6 @@ function stopSubmit(event) {
     event.preventDefault()
 }
 
-//4c pt 1 & 2 --breaking when displayBooks() is activated -- why?
-
 function submitBook(event) {
     
 
@@ -137,3 +139,9 @@ function submitBook(event) {
 
 addNewBook.addEventListener("click", stopSubmit);
 addNewBook.addEventListener("click", submitBook);
+
+/* Step 5) create a delete book button that when clicked will remove the book from the myLibrary array and dislay 
+   - You will need to associate your DOM elements with the actual book objects in some way. One easy solution is giving them a data-attribute that corresponds to the unique id of the respective book object.*/
+/* Step 6) create a edit book button that will change its read status
+  - To facilitate this you will want to create Book prototype function that toggles a book instance’s read status.
+*/
