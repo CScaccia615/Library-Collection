@@ -123,8 +123,7 @@ function submitBook(event) {
             let title = document.getElementById("book_title").value;
             let author = document.getElementById("book_author").value;
             let pageNum = document.getElementById("page_number").value;
-            let readStatus = document.getElementById("book_read").value;
-           
+            let readStatus = document.querySelector('input[name="read_status"]:checked').value;
           
             
             addBookToLibrary(title,author,pageNum,readStatus);
