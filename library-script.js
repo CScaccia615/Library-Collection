@@ -1,5 +1,21 @@
 const myLibrary = [
     //array to store book objects
+    {
+        title: "A Court of Thorns and Roses",
+        author: "Sarah J. Maas",
+        pageNumber: 448,
+        readStatus: "read",
+        bookID: crypto.randomUUID()
+    },
+
+    {
+        title: "Fourth Wing",
+        author: "Rebecca Yarros",
+        pageNumber: 528,
+        readStatus: "read",
+        bookID: crypto.randomUUID()
+    },
+
 ]
 
 /* Step 1) Make a Book object constructor that has the following key/value pairs:
