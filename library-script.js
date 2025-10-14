@@ -12,22 +12,22 @@
 */
 
 const myLibrary = [
-    //array to store book objects
-    {
-        title: "A Court of Thorns and Roses",
-        author: "Sarah J. Maas",
-        pageNumber: 448,
-        readStatus: "read",
-        bookID: crypto.randomUUID()
-    },
+    // //array to store book objects
+    // {
+    //     title: "A Court of Thorns and Roses",
+    //     author: "Sarah J. Maas",
+    //     pageNumber: 448,
+    //     readStatus: "read",
+    //     bookID: crypto.randomUUID()
+    // },
 
-    {
-        title: "Fourth Wing",
-        author: "Rebecca Yarros",
-        pageNumber: 528,
-        readStatus: "read",
-        bookID: crypto.randomUUID()
-    },
+    // {
+    //     title: "Fourth Wing",
+    //     author: "Rebecca Yarros",
+    //     pageNumber: 528,
+    //     readStatus: "read",
+    //     bookID: crypto.randomUUID()
+    // },
 
 ]
 
@@ -61,23 +61,30 @@ function addBookToLibrary(title,author,pageNumber,readStatus){
 const table = document.getElementById("table")
 
 
+
 function displayBooks(Book){
     for(Book of myLibrary){
         const newRow = document.createElement("tr");
+        newRow.setAttribute("class","bookItem")
+        newRow.dataset.id = Book.bookID
         const tdBook = document.createElement("td");
         const tdAuthor = document.createElement("td");
         const tdPageLength = document.createElement("td");
         const tdReadStatus = document.createElement("td");
+        const tdEditBtn = document.createElement("td");
 
         tdBook.textContent = Book.title;
         tdAuthor.textContent = Book.author;
         tdPageLength.textContent = Book.pageNumber;
         tdReadStatus.textContent = Book.readStatus;
+        tdEditBtn.innerHTML = 
+            '<button id="editBtn">Edit Book</button>';
 
         newRow.appendChild(tdBook);
         newRow.appendChild(tdAuthor);
         newRow.appendChild(tdPageLength);
         newRow.appendChild(tdReadStatus);
+        newRow.appendChild(tdEditBtn);
         table.appendChild(newRow);
         
    }
@@ -129,19 +136,45 @@ function submitBook(event) {
           
             
             addBookToLibrary(title,author,pageNum,readStatus);
-            
+             displayBooks(myLibrary)
             //d reset form
            document.getElementById("bookForm").reset();
-           displayBooks(myLibrary)
+          
     }
 
+/* Step 5) create a delete book button that when clicked will remove the book from the myLibrary array and dislay 
+   - You will need to associate your DOM elements with the actual book objects in some way. One easy solution is giving them a data-attribute that corresponds to the unique id of the respective book object.
+   
+   Plan: 
+   - create a delete btn in the DOM
+   - set data-id for bookRow value to equal Book.bookID <-- this will happen in displayBook() for now;
+   -create a forEach loop (similar to displayBooks) that will apply a onClick instance to each delete button
+   
+   Onclick event: 
+   when delete button is clicked do the following: 
+    - run a filter on the myLibrary[] array to the associated bookID
+    - delete associated entry
+    - Run displayBook() to update display
+   */
+
+const deleteBtn =  document.createElement("button");
+const deleteBtnTxt = document.createTextNode("Remove Book");
+
+deleteBtn.appendChild(deleteBtnTxt);
+
+function uniqueID(){
+    Book.dataset.bookID = Book.bookID;
+}
+
+/* Step 6) create a edit book button that will change its read status
+  - To facilitate this you will want to create Book prototype function that toggles a book instance’s read status.
+*/
 
 
 addNewBook.addEventListener("click", stopSubmit);
 addNewBook.addEventListener("click", submitBook);
 
-/* Step 5) create a delete book button that when clicked will remove the book from the myLibrary array and dislay 
-   - You will need to associate your DOM elements with the actual book objects in some way. One easy solution is giving them a data-attribute that corresponds to the unique id of the respective book object.*/
-/* Step 6) create a edit book button that will change its read status
-  - To facilitate this you will want to create Book prototype function that toggles a book instance’s read status.
-*/
+addBookToLibrary("A Court of Thorns and Roses","Sarah J. Maas",448,"read");
+addBookToLibrary("Fourth Wing","Rebecca Yarros",528,"read")
+
+displayBooks(myLibrary)
