@@ -60,31 +60,50 @@ function addBookToLibrary(title,author,pageNumber,readStatus){
 
 const table = document.getElementById("table")
 
+// const deleteBtn =  document.createElement("button");
+// const deleteBtnTxt = document.createTextNode("Remove Book");
 
+// deleteBtn.appendChild(deleteBtnTxt);
 
 function displayBooks(Book){
     for(Book of myLibrary){
         const newRow = document.createElement("tr");
         newRow.setAttribute("class","bookItem")
+        //set data attribute
         newRow.dataset.id = Book.bookID
+
+        //create td 
         const tdBook = document.createElement("td");
         const tdAuthor = document.createElement("td");
         const tdPageLength = document.createElement("td");
         const tdReadStatus = document.createElement("td");
         const tdEditBtn = document.createElement("td");
+        const tdDeleteBtn = document.createElement("td");
 
         tdBook.textContent = Book.title;
         tdAuthor.textContent = Book.author;
         tdPageLength.textContent = Book.pageNumber;
         tdReadStatus.textContent = Book.readStatus;
-        tdEditBtn.innerHTML = 
-            '<button id="editBtn">Edit Book</button>';
+      
+         const editBtn =  document.createElement("button");
+        const editBtnTxt = document.createTextNode("Edit Book");
+        editBtn.appendChild(editBtnTxt);
 
+       tdEditBtn.appendChild(editBtn)
+
+        const deleteBtn =  document.createElement("button");
+        const deleteBtnTxt = document.createTextNode("Remove Book");
+        deleteBtn.appendChild(deleteBtnTxt);
+
+       tdDeleteBtn.appendChild(deleteBtn)
+        
+        deleteBtn.appendChild(deleteBtnTxt);
         newRow.appendChild(tdBook);
         newRow.appendChild(tdAuthor);
         newRow.appendChild(tdPageLength);
         newRow.appendChild(tdReadStatus);
         newRow.appendChild(tdEditBtn);
+        newRow.appendChild(tdDeleteBtn);
         table.appendChild(newRow);
         
    }
@@ -157,14 +176,8 @@ function submitBook(event) {
     - Run displayBook() to update display
    */
 
-const deleteBtn =  document.createElement("button");
-const deleteBtnTxt = document.createTextNode("Remove Book");
 
-deleteBtn.appendChild(deleteBtnTxt);
 
-function uniqueID(){
-    Book.dataset.bookID = Book.bookID;
-}
 
 /* Step 6) create a edit book button that will change its read status
   - To facilitate this you will want to create Book prototype function that toggles a book instance’s read status.
