@@ -46,7 +46,10 @@ function Book(title,author,pageNumber,readStatus) {
 
 // Book.prototype.updateBook = displayBooks();
 
+// protoype function for editing book
+function editBook (readStatus) {
 
+}
 
 function addBookToLibrary(title,author,pageNumber,readStatus){
 
@@ -64,6 +67,10 @@ const table = document.getElementById("table")
 // const deleteBtnTxt = document.createTextNode("Remove Book");
 
 // deleteBtn.appendChild(deleteBtnTxt);
+
+
+
+      
 
 function displayBooks(Book){
     for(Book of myLibrary){
@@ -84,20 +91,31 @@ function displayBooks(Book){
         tdAuthor.textContent = Book.author;
         tdPageLength.textContent = Book.pageNumber;
         tdReadStatus.textContent = Book.readStatus;
-      
-         const editBtn =  document.createElement("button");
+        
+
+
+        //move this to a object prototype and connect it to Book constructor
+        const editBtn =  document.createElement("button");
         const editBtnTxt = document.createTextNode("Edit Book");
         editBtn.appendChild(editBtnTxt);
 
-       tdEditBtn.appendChild(editBtn)
+     
 
+       //Move this to a object prototype and connect to Book Constructor
         const deleteBtn =  document.createElement("button");
         const deleteBtnTxt = document.createTextNode("Remove Book");
         deleteBtn.appendChild(deleteBtnTxt);
 
-       tdDeleteBtn.appendChild(deleteBtn)
-        
-        deleteBtn.appendChild(deleteBtnTxt);
+        //delete button event
+        deleteBtn.addEventListener("click",() => {
+           // test alert
+            // alert(`table id is ${newRow.dataset.id}`);
+        });
+
+
+        tdEditBtn.appendChild(editBtn);
+        tdDeleteBtn.appendChild(deleteBtn);
+
         newRow.appendChild(tdBook);
         newRow.appendChild(tdAuthor);
         newRow.appendChild(tdPageLength);
@@ -167,15 +185,14 @@ function submitBook(event) {
    Plan: 
    - create a delete btn in the DOM
    - set data-id for bookRow value to equal Book.bookID <-- this will happen in displayBook() for now;
-   -create a forEach loop (similar to displayBooks) that will apply a onClick instance to each delete button
+   - create a forEach loop (similar to displayBooks) that will apply a onClick instance to each delete button
    
    Onclick event: 
    when delete button is clicked do the following: 
     - run a filter on the myLibrary[] array to the associated bookID
-    - delete associated entry
+    - delete associated entry in myLibrary[]
     - Run displayBook() to update display
    */
-
 
 
 
