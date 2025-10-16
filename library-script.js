@@ -103,14 +103,28 @@ function displayBooks(Book){
 
        //Move this to a object prototype and connect to Book Constructor
         const deleteBtn =  document.createElement("button");
+        deleteBtn.setAttribute('class','deleteButton')
         const deleteBtnTxt = document.createTextNode("Remove Book");
         deleteBtn.appendChild(deleteBtnTxt);
 
         //delete button event
         deleteBtn.addEventListener("click",() => {
            // test alert
-            // alert(`table id is ${newRow.dataset.id}`);
-        });
+            //alert(`table id is ${newRow.dataset.id}`);
+
+            //create variable that equals the newRow.dataset.id 
+            
+            //filter array to find match
+            let deleteFilter =  myLibrary.findIndex(Book => Book.bookID ===newRow.dataset.id)
+            //testing filter
+            if(deleteFilter !== -1) {
+                myLibrary.splice(deleteFilter,1);
+                displayBooks(myLibrary);
+            }
+            console.log(myLibrary)
+        })
+          
+
 
 
         tdEditBtn.appendChild(editBtn);
