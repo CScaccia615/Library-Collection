@@ -7,9 +7,24 @@
 
     Step 2) Create a function that will take parameters and create a new book from the Book Object, and store it in the myLibraryArray
 
-    Step 3 create table - https://stackoverflow.com/questions/72527457/how-to-create-an-html-table-from-an-array-of-objects
+    Step 3) create table - https://stackoverflow.com/questions/72527457/how-to-create-an-html-table-from-an-array-of-objects
 
-*/
+   
+    Step 5) create a delete book button that when clicked will remove the book from the myLibrary array and dislay 
+         - You will need to associate your DOM elements with the actual book objects in some way. One easy solution is giving them a data-attribute that corresponds to the unique id of the respective book object.
+   
+        Plan: 
+        - create a delete btn in the DOM
+        - set data-id for bookRow value to equal Book.bookID <-- this will happen in displayBook() for now;
+        - create a forEach loop (similar to displayBooks) that will apply a onClick instance to each delete button
+        
+        Onclick event: 
+        when delete button is clicked do the following: 
+            - run a filter on the myLibrary[] array to the associated bookID
+            - delete associated entry in myLibrary[]
+            - Run displayBook() to update display
+   */
+
 
 const myLibrary = [
     // //array to store book objects
@@ -61,17 +76,8 @@ function addBookToLibrary(title,author,pageNumber,readStatus){
     //displayBooks()
 }
 
-const table = document.getElementById("table")
-
-// const deleteBtn =  document.createElement("button");
-// const deleteBtnTxt = document.createTextNode("Remove Book");
-
-// deleteBtn.appendChild(deleteBtnTxt);
-
-
-
+const table = document.getElementById("library-table")
       
-
 function displayBooks(Book){
     for(Book of myLibrary){
         const newRow = document.createElement("tr");
@@ -121,40 +127,40 @@ function displayBooks(Book){
                 myLibrary.splice(deleteFilter,1);
                 displayBooks(myLibrary);
             }
-            console.log(myLibrary)
+           
         })
-          
 
-
-
+        //append buttons to correct td
         tdEditBtn.appendChild(editBtn);
         tdDeleteBtn.appendChild(deleteBtn);
-
+       
+        //append td's to new row
         newRow.appendChild(tdBook);
         newRow.appendChild(tdAuthor);
         newRow.appendChild(tdPageLength);
         newRow.appendChild(tdReadStatus);
         newRow.appendChild(tdEditBtn);
         newRow.appendChild(tdDeleteBtn);
+
+        //apend new row to table
         table.appendChild(newRow);
         
    }
 
 }
 
-/* 
-step 4a) create a "add book" button that brings up a form that will allow users to input the details for a new book
+/* Step 4)  
+        a) create a "add book" button that brings up a form that will allow users to input the details for a new book
 
-step 4b) using event.preventDefault() prevent the submit button from sending it to a server and instead store it locally 
-    - documentation: https://developer.mozilla.org/en-US/docs/Web/API/Event/preventDefault
-                     https://www.w3schools.com/jsref/event_preventdefault.asp
+        b) using event.preventDefault() prevent the submit button from sending it to a server and instead store it locally 
+        - documentation: https://developer.mozilla.org/en-US/docs/Web/API/Event/preventDefault
+                        https://www.w3schools.com/jsref/event_preventdefault.asp
 
 
-step 4c pt 1) when submit button is pressed - reset the table to be blank
-
-step 4c pt 2) take the data from the form and use it to add the book to the library via the addBookToLibrary function
-    documentation: https://developer.mozilla.org/en-US/docs/Web/API/FormData/FormData
-
+        c 
+            pt 1) when submit button is pressed - reset the table to be blank
+            pt 2) take the data from the form and use it to add the book to the library via the addBookToLibrary function
+                documentation: https://developer.mozilla.org/en-US/docs/Web/API/FormData/FormData
 */
 
 //4a
@@ -193,20 +199,6 @@ function submitBook(event) {
           
     }
 
-/* Step 5) create a delete book button that when clicked will remove the book from the myLibrary array and dislay 
-   - You will need to associate your DOM elements with the actual book objects in some way. One easy solution is giving them a data-attribute that corresponds to the unique id of the respective book object.
-   
-   Plan: 
-   - create a delete btn in the DOM
-   - set data-id for bookRow value to equal Book.bookID <-- this will happen in displayBook() for now;
-   - create a forEach loop (similar to displayBooks) that will apply a onClick instance to each delete button
-   
-   Onclick event: 
-   when delete button is clicked do the following: 
-    - run a filter on the myLibrary[] array to the associated bookID
-    - delete associated entry in myLibrary[]
-    - Run displayBook() to update display
-   */
 
 
 
