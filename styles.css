@@ -40,7 +40,7 @@ h6 {
 
 /*header styles */
 header {
-    background-color: cadetblue; /*for debugging purposes*/
+   border-bottom: 2px solid #c3c3c3;
 
     grid-column: 1 /13;
     grid-row:1;
