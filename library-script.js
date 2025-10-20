@@ -61,6 +61,10 @@ function Book(title,author,pageNumber,readStatus) {
 
 // Book.prototype.updateBook = displayBooks();
 
+/* Step 6) create a edit book button that will change its read status
+  - To facilitate this you will want to create Book prototype function that toggles a book instance’s read status.
+*/
+
 // protoype function for editing book
 function editBook (readStatus) {
 
@@ -202,9 +206,6 @@ function submitBook(event) {
 
 
 
-/* Step 6) create a edit book button that will change its read status
-  - To facilitate this you will want to create Book prototype function that toggles a book instance’s read status.
-*/
 
 
 addNewBook.addEventListener("click", stopSubmit);
