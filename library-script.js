@@ -195,11 +195,12 @@ function submitBook(event) {
             let pageNum = document.getElementById("page_number").value;
             let readStatus = document.querySelector('input[name="read_status"]:checked').value;
           
-            
+            table.innerHTML='';
             addBookToLibrary(title,author,pageNum,readStatus);
              displayBooks(myLibrary)
             //d reset form
            document.getElementById("bookForm").reset();
+           
           
     }
 
