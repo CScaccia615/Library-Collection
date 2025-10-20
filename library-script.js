@@ -129,6 +129,7 @@ function displayBooks(Book){
             //testing filter
             if(deleteFilter !== -1) {
                 myLibrary.splice(deleteFilter,1);
+                table.innerHTML='';
                 displayBooks(myLibrary);
             }
            
