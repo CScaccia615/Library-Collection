@@ -96,15 +96,11 @@ input {
 
 /* Library container */
 .library-container {
-    background-color:lightseagreen; /*for debugging purposes*/
+   
     padding:5px;
 
     grid-column: 5 / 13;
     grid-row: 2;
-
-    display: grid;
-    gap: 20px;
-    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
    
 }
 
@@ -118,6 +114,11 @@ input {
 
 #library-table th {
     text-align: left;
+    font-size: 18px;
+}
+
+#library-table tr {
+   border-bottom: 2px solid #c3c3c3;
 }
 
 #library-table td {
