@@ -81,6 +81,7 @@ function addBookToLibrary(title,author,pageNumber,readStatus){
 }
 
 const table = document.getElementById("library-table")
+const tableBody = document.querySelector("tbody")
       
 function displayBooks(Book){
     for(Book of myLibrary){
@@ -104,14 +105,16 @@ function displayBooks(Book){
         
 
 
-        //move this to a object prototype and connect it to Book constructor
+        //Move edit button section somewhere else and re integrate it 
+        //into displaybooks() differently
         const editBtn =  document.createElement("button");
         const editBtnTxt = document.createTextNode("Edit Book");
         editBtn.appendChild(editBtnTxt);
 
      
 
-       //Move this to a object prototype and connect to Book Constructor
+       //Move delete button section somewhere else and re integrate it 
+       //into displaybooks() differently
         const deleteBtn =  document.createElement("button");
         deleteBtn.setAttribute('class','deleteButton')
         const deleteBtnTxt = document.createTextNode("Remove Book");
@@ -122,14 +125,13 @@ function displayBooks(Book){
            // test alert
             //alert(`table id is ${newRow.dataset.id}`);
 
-            //create variable that equals the newRow.dataset.id 
-            
             //filter array to find match
-            let deleteFilter =  myLibrary.findIndex(Book => Book.bookID ===newRow.dataset.id)
+            let deleteFilter =  myLibrary.findIndex(Book => Book.bookID === newRow.dataset.id)
             //testing filter
             if(deleteFilter !== -1) {
+                /* need to find a solution that will delete table rows and not delete table header */
                 myLibrary.splice(deleteFilter,1);
-                table.innerHTML='';
+                //tableBody.innerHTML='';
                 displayBooks(myLibrary);
             }
            
