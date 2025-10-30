@@ -9,6 +9,20 @@
 
     Step 3) create table - https://stackoverflow.com/questions/72527457/how-to-create-an-html-table-from-an-array-of-objects
 
+    Step 4)  
+        a) create a "add book" button that brings up a form that will allow users to input the details for a new book
+
+        b) using event.preventDefault() prevent the submit button from sending it to a server and instead store it locally 
+        - documentation: https://developer.mozilla.org/en-US/docs/Web/API/Event/preventDefault
+                        https://www.w3schools.com/jsref/event_preventdefault.asp
+
+
+        c 
+            pt 1) when submit button is pressed - reset the table to be blank
+            pt 2) take the data from the form and use it to add the book to the library via the addBookToLibrary function
+                documentation: https://developer.mozilla.org/en-US/docs/Web/API/FormData/FormData
+
+
    
     Step 5) create a delete book button that when clicked will remove the book from the myLibrary array and dislay 
          - You will need to associate your DOM elements with the actual book objects in some way. One easy solution is giving them a data-attribute that corresponds to the unique id of the respective book object.
@@ -26,27 +40,7 @@
    */
 
 
-const myLibrary = [
-    // //array to store book objects
-    // {
-    //     title: "A Court of Thorns and Roses",
-    //     author: "Sarah J. Maas",
-    //     pageNumber: 448,
-    //     readStatus: "read",
-    //     bookID: crypto.randomUUID()
-    // },
-
-    // {
-    //     title: "Fourth Wing",
-    //     author: "Rebecca Yarros",
-    //     pageNumber: 528,
-    //     readStatus: "read",
-    //     bookID: crypto.randomUUID()
-    // },
-
-]
-
-
+const myLibrary = []
 
 //this is the prototype
 
@@ -61,14 +55,7 @@ function Book(title,author,pageNumber,readStatus) {
 
 // Book.prototype.updateBook = displayBooks();
 
-/* Step 6) create a edit book button that will change its read status
-  - To facilitate this you will want to create Book prototype function that toggles a book instance’s read status.
-*/
 
-// protoype function for editing book
-function editBook (readStatus) {
-
-}
 
 function addBookToLibrary(title,author,pageNumber,readStatus){
 
@@ -81,9 +68,48 @@ function addBookToLibrary(title,author,pageNumber,readStatus){
 }
 
 const table = document.getElementById("library-table")
-const tableBody = document.querySelector("tbody")
+
+
+//refresh table function
+const tHead = document.getElementById("bookInfo")
+function refreshTable(){
+    table.innerHTML='';
+    //create header for table
+    
+    const thTitle = document.createElement("th");
+    const thAuthor = document.createElement("th");
+    const thPage = document.createElement("th");
+    const thRead = document.createElement("th");
+    const thOpt = document.createElement("th");
+
+    //header attributes & inline styles
+    thTitle.style.width = "30%";
+    thAuthor.style.width = "20%";
+    thPage.style.width = "20%";
+    thRead.style.width = "10%"
+
+    thOpt.setAttribute("colspan", "2");
+    thOpt.style.width = "20%";
+
+    thTitle.textContent="Book Title";
+    thAuthor.textContent="Book Author";
+    thPage.textContent="Page Length";
+    thRead.textContent="Read Status";
+
+    //append th to thead
+    tHead.appendChild(thTitle);
+    tHead.appendChild(thAuthor);
+    tHead.appendChild(thPage);
+    tHead.appendChild(thRead);
+    tHead.appendChild(thOpt);
+
+    //append thead to table
+    table.appendChild(tHead);
+
+}
       
 function displayBooks(Book){
+    refreshTable();
     for(Book of myLibrary){
         const newRow = document.createElement("tr");
         newRow.setAttribute("class","bookItem")
@@ -102,45 +128,8 @@ function displayBooks(Book){
         tdAuthor.textContent = Book.author;
         tdPageLength.textContent = Book.pageNumber;
         tdReadStatus.textContent = Book.readStatus;
-        
 
 
-        //Move edit button section somewhere else and re integrate it 
-        //into displaybooks() differently
-        const editBtn =  document.createElement("button");
-        const editBtnTxt = document.createTextNode("Edit Book");
-        editBtn.appendChild(editBtnTxt);
-
-     
-
-       //Move delete button section somewhere else and re integrate it 
-       //into displaybooks() differently
-        const deleteBtn =  document.createElement("button");
-        deleteBtn.setAttribute('class','deleteButton')
-        const deleteBtnTxt = document.createTextNode("Remove Book");
-        deleteBtn.appendChild(deleteBtnTxt);
-
-        //delete button event
-        deleteBtn.addEventListener("click",() => {
-           // test alert
-            //alert(`table id is ${newRow.dataset.id}`);
-
-            //filter array to find match
-            let deleteFilter =  myLibrary.findIndex(Book => Book.bookID === newRow.dataset.id)
-            //testing filter
-            if(deleteFilter !== -1) {
-                /* need to find a solution that will delete table rows and not delete table header */
-                myLibrary.splice(deleteFilter,1);
-                //tableBody.innerHTML='';
-                displayBooks(myLibrary);
-            }
-           
-        })
-
-        //append buttons to correct td
-        tdEditBtn.appendChild(editBtn);
-        tdDeleteBtn.appendChild(deleteBtn);
-       
         //append td's to new row
         newRow.appendChild(tdBook);
         newRow.appendChild(tdAuthor);
@@ -156,19 +145,7 @@ function displayBooks(Book){
 
 }
 
-/* Step 4)  
-        a) create a "add book" button that brings up a form that will allow users to input the details for a new book
 
-        b) using event.preventDefault() prevent the submit button from sending it to a server and instead store it locally 
-        - documentation: https://developer.mozilla.org/en-US/docs/Web/API/Event/preventDefault
-                        https://www.w3schools.com/jsref/event_preventdefault.asp
-
-
-        c 
-            pt 1) when submit button is pressed - reset the table to be blank
-            pt 2) take the data from the form and use it to add the book to the library via the addBookToLibrary function
-                documentation: https://developer.mozilla.org/en-US/docs/Web/API/FormData/FormData
-*/
 
 //4a
 const showForm = document.querySelector('#create');
@@ -198,11 +175,15 @@ function submitBook(event) {
             let pageNum = document.getElementById("page_number").value;
             let readStatus = document.querySelector('input[name="read_status"]:checked').value;
           
-            table.innerHTML='';
+        
             addBookToLibrary(title,author,pageNum,readStatus);
+            //refresh table
+            refreshTable();
+            //display array
              displayBooks(myLibrary)
             //d reset form
            document.getElementById("bookForm").reset();
+
            
           
     }
@@ -219,3 +200,8 @@ addBookToLibrary("A Court of Thorns and Roses","Sarah J. Maas",448,"read");
 addBookToLibrary("Fourth Wing","Rebecca Yarros",528,"read")
 
 displayBooks(myLibrary)
+
+
+/* Step 6) create a edit book button that will change its read status
+  - To facilitate this you will want to create Book prototype function that toggles a book instance’s read status.
+*/
