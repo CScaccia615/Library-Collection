@@ -73,7 +73,7 @@ const table = document.getElementById("library-table")
 //refresh table function
 const tHead = document.getElementById("bookInfo")
 function refreshTable(){
-    table.innerHTML='';
+    tHead.innerHTML='';
     //create header for table
     
     const thTitle = document.createElement("th");
@@ -177,6 +177,7 @@ function submitBook(event) {
           
         
             addBookToLibrary(title,author,pageNum,readStatus);
+            table.innerHTML=''
             //refresh table
             refreshTable();
             //display array
