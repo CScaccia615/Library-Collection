@@ -107,6 +107,9 @@ function refreshTable(){
     table.appendChild(tHead);
 
 }
+
+
+
       
 function displayBooks(Book){
     refreshTable();
@@ -129,7 +132,30 @@ function displayBooks(Book){
         tdPageLength.textContent = Book.pageNumber;
         tdReadStatus.textContent = Book.readStatus;
 
+        const deleteBtn =  document.createElement("button");
+        deleteBtn.setAttribute('class','deleteButton')
+        const deleteBtnTxt = document.createTextNode("Remove Book");
+        deleteBtn.appendChild(deleteBtnTxt);
 
+        //delete button event
+        deleteBtn.addEventListener("click",() => {
+           // test alert
+            //alert(`table id is ${newRow.dataset.id}`);
+
+            //create variable that equals the newRow.dataset.id 
+            
+            //filter array to find match
+            let deleteFilter =  myLibrary.findIndex(Book => Book.bookID === newRow.dataset.id)
+            //testing filter
+            if(deleteFilter !== -1) {
+                myLibrary.splice(deleteFilter,1);
+                table.innerHTML='';
+                displayBooks(myLibrary);
+            }
+           
+        })
+
+        tdDeleteBtn.appendChild(deleteBtn);
         //append td's to new row
         newRow.appendChild(tdBook);
         newRow.appendChild(tdAuthor);
