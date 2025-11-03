@@ -67,6 +67,9 @@ function addBookToLibrary(title,author,pageNumber,readStatus){
     //displayBooks()
 }
 
+
+
+
 const table = document.getElementById("library-table")
 
 
@@ -108,9 +111,6 @@ function refreshTable(){
 
 }
 
-
-
-      
 function displayBooks(Book){
     refreshTable();
     for(Book of myLibrary){
@@ -132,12 +132,26 @@ function displayBooks(Book){
         tdPageLength.textContent = Book.pageNumber;
         tdReadStatus.textContent = Book.readStatus;
 
+        //create edit button
+        const editBtn =  document.createElement("button");
+        const editBtnTxt = document.createTextNode("Edit Book");
+        editBtn.appendChild(editBtnTxt);
+
+        //edit button click event
+        editBtn.addEventListener("click",() =>{
+            //const editFilter =  myLibrary.findIndex(Book => Book.bookID === newRow.dataset.id);
+            alert(`table id is ${newRow.dataset.id}`);
+        })
+
+        tdEditBtn.appendChild(editBtn);
+
+        //create delete button
         const deleteBtn =  document.createElement("button");
         deleteBtn.setAttribute('class','deleteButton')
         const deleteBtnTxt = document.createTextNode("Remove Book");
         deleteBtn.appendChild(deleteBtnTxt);
 
-        //delete button event
+        //delete button click event
         deleteBtn.addEventListener("click",() => {
            // test alert
             //alert(`table id is ${newRow.dataset.id}`);
@@ -215,7 +229,12 @@ function submitBook(event) {
           
     }
 
+/* Step 6) create a edit book button that will change its read status
+  - To facilitate this you will want to create Book prototype function that toggles a book instance’s read status.
 
+  Plan: 
+    
+*/
 
 
 
@@ -229,6 +248,3 @@ addBookToLibrary("Fourth Wing","Rebecca Yarros",528,"read")
 displayBooks(myLibrary)
 
 
-/* Step 6) create a edit book button that will change its read status
-  - To facilitate this you will want to create Book prototype function that toggles a book instance’s read status.
-*/
