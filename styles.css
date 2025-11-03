@@ -1,3 +1,11 @@
+/*HEX CODES:
+#59372b - brown
+#9f624f - orange
+#ae9e8f
+#cca98d
+#f7e7ce - cream
+*/
+
 /* FONTS */ 
 @import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100..900;1,100..900&display=swap');
 
@@ -9,6 +17,8 @@ html {
     margin: 0;
     font-family: "Roboto", Arial, sans-serif;
     font-size: 16px;
+
+    background-color:#fff;;
 }
 
 *,
@@ -26,7 +36,7 @@ h5,
 h6 {
     text-align: center;
     margin:10px 0px;
-    font-weight:500
+    font-weight:700
 }
 
 
@@ -48,7 +58,7 @@ header {
 
 /*user-form styles */
 .user-form {
-    background-color:darkseagreen; /*for debugging purposes*/
+    
 
     grid-column: 1 / 5;
     grid-row: 2;
@@ -60,6 +70,8 @@ header {
     "title"
     "create"
     "user-input-form";
+
+    justify-items: center;
 }
 
 .user-form h3 {
@@ -68,11 +80,22 @@ header {
 
 #create {
     grid-area:create;
+    align-self: center;
 
-    width:100px;
-    height:30px;
+    cursor: pointer;
+    padding:10px 20px;
+    border:none;
+    background-color:#59372b;
 
-    place-self: center;
+    text-align: center;
+    font-size:16px;
+    font-weight:500;
+    color:#f7e7ce;
+
+}
+
+#create:hover {
+    background-color: #9f624f;
 }
 
 #bookForm form {
@@ -96,7 +119,7 @@ input {
 
 /* Library container */
 .library-container {
-   
+    /*background-color:lightseagreen; for debugging purposes*/
     padding:5px;
 
     grid-column: 5 / 13;
@@ -114,16 +137,17 @@ input {
 
 #library-table th {
     text-align: left;
-    font-size: 18px;
+    font-size:18px;
 }
 
 #library-table tr {
-   border-bottom: 2px solid #c3c3c3;
+   border-bottom: 2px solid #ae9e8f;
 }
 
 #library-table td {
     text-align: left;
 }
+
 
 /*footer styles */
 footer {
