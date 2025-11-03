@@ -74,13 +74,29 @@ function addBookToLibrary(title,author,pageNumber,readStatus){
     - make Book prototype function
         a) if read status = read -> change status to not read
         b) if read status = not read -> change status to read
-        c) once status is changed, return Book 
-        d) update display to reflect change
+        c) update display to reflect change
     
 */
 
 Book.prototype.editStatus = function(){
-    //console.log("Hello, I am a book!");
+    //test
+    //console.log("Hello, I am a book!"); 
+
+    //6a
+    if(this.readStatus == "read"){
+        this.readStatus = "not read"
+        //6c
+        table.innerHTML='';
+        displayBooks(myLibrary);
+        
+    }
+    //6b
+    else if(this.readStatus == "not read"){
+        this.readStatus="read"
+        //6c
+        table.innerHTML='';
+        displayBooks(myLibrary);
+    }
 };
 
 const table = document.getElementById("library-table")
