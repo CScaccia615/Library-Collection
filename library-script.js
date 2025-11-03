@@ -53,9 +53,6 @@ function Book(title,author,pageNumber,readStatus) {
     this.bookID = crypto.randomUUID();
 }
 
-// Book.prototype.updateBook = displayBooks();
-
-
 
 function addBookToLibrary(title,author,pageNumber,readStatus){
 
@@ -68,7 +65,23 @@ function addBookToLibrary(title,author,pageNumber,readStatus){
 }
 
 
+/* Step 6) create a edit book button that will change its read status
+  - To facilitate this you will want to create Book prototype function that toggles a book instance’s read status.
 
+  Plan:
+    - on click event must match bookid to row id
+    -once match is found run the Book prototype function 
+    - make Book prototype function
+        a) if read status = read -> change status to not read
+        b) if read status = not read -> change status to read
+        c) once status is changed, return Book 
+        d) update display to reflect change
+    
+*/
+
+Book.prototype.editStatus = function(){
+    //console.log("Hello, I am a book!");
+};
 
 const table = document.getElementById("library-table")
 
@@ -140,7 +153,8 @@ function displayBooks(Book){
         //edit button click event
         editBtn.addEventListener("click",() =>{
             //const editFilter =  myLibrary.findIndex(Book => Book.bookID === newRow.dataset.id);
-            alert(`table id is ${newRow.dataset.id}`);
+            //alert(`table id is ${newRow.dataset.id}`);
+            Book.editStatus();
         })
 
         tdEditBtn.appendChild(editBtn);
@@ -229,12 +243,7 @@ function submitBook(event) {
           
     }
 
-/* Step 6) create a edit book button that will change its read status
-  - To facilitate this you will want to create Book prototype function that toggles a book instance’s read status.
 
-  Plan: 
-    
-*/
 
 
 
