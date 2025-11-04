@@ -51,7 +51,7 @@ h6 {
 
 /*header styles */
 header {
-    border-bottom: 2px solid #c3c3c3;
+    border-bottom: 2px solid #ae9e8f;
 
     grid-column: 1 /13;
     grid-row:1;
@@ -59,8 +59,6 @@ header {
 
 /*user-form styles */
 .user-form {
-    
-
     grid-column: 1 / 5;
     grid-row: 2;
 
@@ -73,6 +71,8 @@ header {
     "user-input-form";
 
     justify-items: center;
+
+    border-right:2px solid #ae9e8f;
 }
 
 .user-form h3 {
@@ -109,8 +109,10 @@ fieldset {
 
 legend {
     margin: 10px 0px;
+
     font-weight: 500;
     font-size: 17px;
+    color:#59372b;
 }
 
 label,
