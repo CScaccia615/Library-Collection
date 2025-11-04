@@ -151,6 +151,18 @@ input {
     text-align: left;
 }
 
+.editBtn,
+.deleteBtn {
+    cursor: pointer;
+    padding:10px 20px;
+    border:none;
+    background-color:#59372b;
+
+    text-align: center;
+    font-size:14px;
+    font-weight:500;
+    color:#f7e7ce;
+}
 
 /*footer styles */
 footer {
