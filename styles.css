@@ -128,7 +128,6 @@ input {
 
 /* Library container */
 .library-container {
-    /*background-color:lightseagreen; for debugging purposes*/
     padding:5px;
 
     grid-column: 5 / 13;
