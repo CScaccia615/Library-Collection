@@ -17,7 +17,7 @@
                         https://www.w3schools.com/jsref/event_preventdefault.asp
 
 
-        c 
+        c) 
             pt 1) when submit button is pressed - reset the table to be blank
             pt 2) take the data from the form and use it to add the book to the library via the addBookToLibrary function
                 documentation: https://developer.mozilla.org/en-US/docs/Web/API/FormData/FormData
