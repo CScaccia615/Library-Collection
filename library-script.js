@@ -37,8 +37,19 @@
             - run a filter on the myLibrary[] array to the associated bookID
             - delete associated entry in myLibrary[]
             - Run displayBook() to update display
-   */
 
+    Step 6) create a edit book button that will change its read status
+  - To facilitate this you will want to create Book prototype function that toggles a book instance’s read status.
+
+  Plan:
+    - on click event must match bookid to row id
+    -once match is found run the Book prototype function 
+    - make Book prototype function
+        a) if read status = read -> change status to not read
+        b) if read status = not read -> change status to read
+        c) update display to reflect change
+    
+*/
 
 const myLibrary = []
 
@@ -65,18 +76,7 @@ function addBookToLibrary(title,author,pageNumber,readStatus){
 }
 
 
-/* Step 6) create a edit book button that will change its read status
-  - To facilitate this you will want to create Book prototype function that toggles a book instance’s read status.
 
-  Plan:
-    - on click event must match bookid to row id
-    -once match is found run the Book prototype function 
-    - make Book prototype function
-        a) if read status = read -> change status to not read
-        b) if read status = not read -> change status to read
-        c) update display to reflect change
-    
-*/
 
 Book.prototype.editStatus = function(){
     //test
@@ -165,11 +165,10 @@ function displayBooks(Book){
         const editBtn =  document.createElement("button");
         const editBtnTxt = document.createTextNode("Edit Book");
         editBtn.appendChild(editBtnTxt);
+        editBtn.setAttribute("class","editBtn")
 
         //edit button click event
         editBtn.addEventListener("click",() =>{
-            //const editFilter =  myLibrary.findIndex(Book => Book.bookID === newRow.dataset.id);
-            //alert(`table id is ${newRow.dataset.id}`);
             Book.editStatus();
         })
 
@@ -180,14 +179,11 @@ function displayBooks(Book){
         deleteBtn.setAttribute('class','deleteButton')
         const deleteBtnTxt = document.createTextNode("Remove Book");
         deleteBtn.appendChild(deleteBtnTxt);
+        deleteBtn.setAttribute("class","deleteBtn")
 
         //delete button click event
         deleteBtn.addEventListener("click",() => {
-           // test alert
-            //alert(`table id is ${newRow.dataset.id}`);
-
             //create variable that equals the newRow.dataset.id 
-            
             //filter array to find match
             let deleteFilter =  myLibrary.findIndex(Book => Book.bookID === newRow.dataset.id)
             //testing filter
@@ -227,6 +223,7 @@ bookForm.style.display ='none';
 showForm.addEventListener("click",() =>{
     //make form show up
     bookForm.style.display ='contents';
+    showForm.style.display='none';
 
 } )
 
@@ -258,10 +255,6 @@ function submitBook(event) {
            
           
     }
-
-
-
-
 
 
 addNewBook.addEventListener("click", stopSubmit);
