@@ -79,7 +79,8 @@ header {
     grid-area: title;
 }
 
-#create {
+#create,
+#addBook {
     grid-area:create;
     align-self: center;
 
@@ -93,6 +94,11 @@ header {
     font-weight:500;
     color:#f7e7ce;
 
+}
+
+#addBook{
+    display:flex;
+    margin: auto;
 }
 
 #create:hover {
@@ -141,6 +147,7 @@ input {
 #library-table th {
     text-align: left;
     font-size:18px;
+    color:#59372b
 }
 
 #library-table tr {
